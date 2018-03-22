@@ -16,12 +16,6 @@ public class Activity_Altas extends AppCompatActivity {
     private EditText Sapellido;
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        Toast.makeText(this,"esto es el onPause",Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__altas);

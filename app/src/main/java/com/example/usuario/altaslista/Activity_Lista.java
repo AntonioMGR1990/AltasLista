@@ -33,7 +33,8 @@ public class Activity_Lista extends AppCompatActivity {
 
         listaPersonas= ArrayPersonas.getInstance().getPersonas();
         lista=(ListView)findViewById(R.id.lista);
-        adapter=new ArrayAdapter<Persona> (this, android.R.layout.simple_list_item_2, android.R.id.text1, listaPersonas) {
+        //para el simple_list_item_1 solo se rellena el TextView text1
+        adapter=new ArrayAdapter<Persona> (this, android.R.layout.simple_list_item_1, listaPersonas) {
 
             @Override
             public View getView(int position,
@@ -41,12 +42,10 @@ public class Activity_Lista extends AppCompatActivity {
                 View view = super.getView(position, convertView, parent);
 
                 TextView text1 = (TextView) view.findViewById(android.R.id.text1);
-                TextView text2 = (TextView) view.findViewById(android.R.id.text2);
-
                 text1.setText(listaPersonas.get(position).getNombre());
-
+                /*TextView text2 = (TextView) view.findViewById(android.R.id.text2);
                 text2.setText( listaPersonas.get(position).getPrimerApellido()+" "+ listaPersonas.get(position).getSegundoApellido());
-
+                */
                 return view;
             }
 
