@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class Activity_Lista extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity__lista);
+
         findViewById(R.id.Volver).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,5 +52,17 @@ public class Activity_Lista extends AppCompatActivity {
 
         };
         lista.setAdapter(adapter);
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent2 = new Intent(Activity_Lista.this,Activity_Altas.class);
+                intent2.putExtra("editable",false);
+                intent2.putExtra("nombrepersona",listaPersonas.get(i).getNombre().toString());
+                intent2.putExtra("primerapellido",listaPersonas.get(i).getPrimerApellido().toString());
+                intent2.putExtra("segundoapellido",listaPersonas.get(i).getSegundoApellido().toString());
+                startActivity(intent2);
+                finish();
+            }
+        });
     }
 }

@@ -28,6 +28,16 @@ public class Activity_Altas extends AppCompatActivity {
         nombre = findViewById(R.id.NombreEditText);
         Papellido = findViewById(R.id.PAEditText2);
         Sapellido = findViewById(R.id.SAEditText3);
+        if(getIntent()!=null && getIntent().hasExtra("editable")){
+            nombre.setEnabled(false);
+            Papellido.setEnabled(false);
+            Sapellido.setEnabled(false);
+            nombre.setText(getIntent().getStringExtra("nombrepersona"));
+            Papellido.setText(getIntent().getStringExtra("primerapellido"));
+            Sapellido.setText(getIntent().getStringExtra("segundoapellido"));
+            findViewById(R.id.Enviarbtn).setVisibility(View.INVISIBLE);
+        }
+
         findViewById(R.id.Volverbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
